@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Call, Bind and Apply</h2>
+    <hr />
+    <h3>Bind</h3>
+    <p>
+      The bind() method creates a new function that, when called, has its this
+      keyword set to the provided value.
+    </p>
+    <pre>
+        var FullName = {
+            firstname: 'farhan',
+            lastname: 'khan ',
+            getFullName: function() {
+                var fullname = this.firstname + ' ' + this.lastname;
+                return fullname;
+            }
+        };
+        
+        var FullNameName = function() {
+            console.log(this.getPokeName() + "Welcome to prepbytes");
+        };
+        
+        var logFullName = FullNameName.bind(FullName); // creates new object and binds FullName. 'this' of FullName === FullName now
+        
+        logFullName(); // 'farhan khan Welcome to prepbytes'
+    </pre>
+    <h3>Call</h3>
+    <p>
+      The call() method calls a function with a given this value and arguments
+      provided individually.
+    </p>
+    <pre>
+        var FullName = {
+            firstname: 'farhan',
+            lastname: 'khan',
+            getFullName: function() {
+                var fullname = this.firstname + ' ' + this.lastname;
+                return fullname;
+            }
+        };
+        
+        var FullNameName = function(snack, hobby) {
+            console.log(this.getFullName() + ' loves ' + snack + ' and ' + hobby);
+        };
+        
+        FullNameName.call(FullName,'swimming', 'noodles'); // farhan khan  loves swimming and noodles
+    </pre>
+    <h3>Apply</h3>
+    <p>
+      apply() serve the exact same purpose. The only difference between how they
+      work is that call() expects all parameters to be passed in individually,
+      whereas apply() expects an array of all of our parameters.
+    </p>
+    <pre>
+        var FullName = {
+            firstname: 'farhan',
+            lastname: 'khan',
+            getFullName: function() {
+                var fullname = this.firstname + ' ' + this.lastname;
+                return fullname;
+            }
+        };
+        
+        var FullNameName = function(snack, hobby) {
+            console.log(this.getFullName() + ' loves ' + snack + ' and ' + hobby);
+        };
+        
+        FullNameName.call(FullName,'sushi', 'algorithms'); //  farhan khan loves swimming and noodles
+        FullName..apply(pokemon,['sushi', 'algorithms']);  // farhan khan loves swimming and noodles
+    </pre>
+    <h3>Define Prototype</h3>
+    <p>
+      The prototype is an object that is associated with every functions and
+      objects by default in JavaScript, where function's prototype property is
+      accessible and modifiable and object's prototype property (aka attribute)
+      is not visible. Every function includes prototype object by default.
+    </p>
+    <h3>Define Prototype Chaining</h3>
+
+    <p>
+      Each object has a private property which holds a link to another object
+      called its prototype. That prototype object has a prototype of its own,
+      and so on until an object is reached with null as its prototype. By
+      definition, null has no prototype, and acts as the final link in this
+      prototype chain.
+    </p>
+  </body>
+</html>
